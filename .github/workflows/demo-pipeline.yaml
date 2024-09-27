@@ -47,8 +47,8 @@ jobs:
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
-        git tag -a '''v'"$VERSION"'''' -m '''Version '"$VERSION"' Repo Tag'''
-        git push origin '''v'"$VERSION"''''
+        git tag -a "v${{ steps.export-version.outputs.VERSION }}" -m "Version ${{ steps.export-version.outputs.VERSION }} Repo Tag"
+        git push origin "v${{ steps.export-version.outputs.VERSION }}"
             
   docker-build-and-push:
     runs-on: ubuntu-latest
