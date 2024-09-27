@@ -69,12 +69,15 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Repo Lowercase
+      run:
+        echo "REPO=${GITHUB_REPOSITORY@L}" >> "${GITHUB_ENV}"
     - name: Docker Build
       run: |
-        docker build -t ghcr.io/${{ github.repository }}/gh-actions-demo:${{ env.TAG }} .
+        docker build -t ghcr.io/${{ env.REPO }}/gh-actions-demo:${{ env.TAG }} .
     - name: Docker Push
       run: |
-        docker push ghcr.io/${{ github.repository }}/gh-actions-demo:${{ env.TAG }}
+        docker push ghcr.io/${{ env.REPO }}/gh-actions-demo:${{ env.TAG }}
     
   version-bump:
     runs-on: ubuntu-latest
