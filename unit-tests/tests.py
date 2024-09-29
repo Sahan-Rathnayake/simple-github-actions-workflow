@@ -24,7 +24,7 @@ class FlaskAppTestCase(unittest.TestCase):
         """Test greeting functionality."""
         response = self.app.post('/', data={'username': 'Sahan'}, follow_redirects=True)
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Hello, Sahan', response.data)
+        self.assertIn(b'Hello, Nikila', response.data)
         self.assertIn(b'Welcome to GitHub Actions Demo', response.data)
         self.assertIn(b'<button class="go-back">Go Back</button>', response.data)
 
